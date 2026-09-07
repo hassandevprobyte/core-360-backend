@@ -1,0 +1,19 @@
+const express = require("express");
+const router = express.Router();
+
+// Controllers
+const companyController = require("../controller/companyController");
+
+// Multer
+const uploadMiddleware = require("../middleware/uploadMiddleware");
+const upload = uploadMiddleware({
+  destination: "public/uploads/companies",
+  uploadType: "single",
+  field: "file",
+});
+
+router.route("/").get(companyController.getCompaniesWithPagination).post(upload, companyController.createCompany);
+router.get("/all", companyController.getAllCompanies);
+router.route("/:id").get(companyController.getCompanyById).patch(upload, companyController.updateCompany).delete(companyController.deleteCompany);
+
+module.exports = router;
