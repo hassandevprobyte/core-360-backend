@@ -5,7 +5,7 @@ const companyRepository = require("./company.repository");
 const userRepository = require("../user/user.repository");
 
 // Constants
-const message = require("../constants/MESSAGE");
+const message = require("../../constants/MESSAGE");
 
 exports.throwErrorIfCompanyDoesNotExist = async (companyId) => {
   const company = await companyRepository.getCompanyById(companyId);

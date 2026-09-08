@@ -3,7 +3,7 @@ const Boom = require("@hapi/boom");
 const jwt = require("jsonwebtoken");
 
 // Repositories
-const userRepository = require("../repositories/userRepository");
+const userRepository = require("../modules/user/user.repository");
 
 // Utilities
 const resolveEffectiveAccess = require("../utils/resolveEffectiveAccess");

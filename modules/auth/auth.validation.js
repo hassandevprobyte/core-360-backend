@@ -2,10 +2,11 @@ const bcrypt = require("bcrypt");
 const Boom = require("@hapi/boom");
 
 // Repositories
-const userRepository = require("../repositories/userRepository");
+const userRepository = require("../user/user.repository");
 
 // Constants
-const message = require("../constants/MESSAGE");
+const message = require("../../constants/MESSAGE");
+
 
 exports.throwErrorIfUserEmailDoesNotExist = async (userEmail) => {
   const user = await userRepository.getUserByEmail(userEmail);

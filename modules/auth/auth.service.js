@@ -18,10 +18,7 @@ const { env } = require("../../config");
 const resolveEffectiveAccess = require("../../utils/resolveEffectiveAccess");
 
 // Constants
-const message = require("../constants/MESSAGE");
-
-// DTOs
-const { LoginResponseDTO, RefreshResponseDTO, ChangePasswordResponseDTO } = require("../dtos/auth");
+const message = require("../../constants/MESSAGE");
 
 exports.login = async (payload) => {
   const validatedPayload = joi.validate(payload, joiSchema.login);

@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 const userService = require("./user.service");
 
 // Utilities
-const transformQueryParams = require("../utils/transformQueryToMongooseSyntax");
+const transformQueryParams = require("../../utils/transformQueryToMongooseSyntax");
 
 // Scope
 const userScope = require("./user.scope");
