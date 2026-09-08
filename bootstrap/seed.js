@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
 
-const Role = require("../model/Role");
-const User = require("../model/User");
+const Role = require("../modules/role/role.model");
+const User = require("../modules/user/user.model");
 
-const roleService = require("../services/roleService");
+const roleService = require("../modules/role/role.service");
 
 const SCOPE = require("../constants/SCOPE");
 

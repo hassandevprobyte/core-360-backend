@@ -39,7 +39,7 @@ const deleteOlderFiles = (dir, dateTime, filesToKeep = 3) => {
 
 const backupMongoDB = () => {
   cron.schedule("0 7 * * 0", (datetime) => {
-    const DB_NAME = "ascent";
+    const DB_NAME = "core360";
     const BACKUP_DIR = path.join(__dirname, "../backup");
 
     if (!fs.existsSync(BACKUP_DIR)) {
