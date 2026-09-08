@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 // Repositories
 const companyRepository = require("../repositories/companyRepository");
 
@@ -50,6 +52,18 @@ exports.updateCompany = async (payload) => {
   if (validatedPayload.acronym && validatedPayload.acronym !== existingCompany.acronym) {
     await companyValidation.throwErrorIfCompanyAcronymExists(validatedPayload.acronym);
     updatePayload.acronym = validatedPayload.acronym;
+  }
+
+  if (validatedPayload.website && validatedPayload.website !== existingCompany.website) {
+    updatePayload.website = validatedPayload.website;
+  }
+
+  if (validatedPayload.phone && validatedPayload.phone !== existingCompany.phone) {
+    updatePayload.phone = validatedPayload.phone;
+  }
+
+  if (validatedPayload.address && !_.isEqual(validatedPayload.address, existingCompany.address?.toObject?.() ?? existingCompany.address)) {
+    updatePayload.address = validatedPayload.address;
   }
 
   if (!Object.keys(updatePayload).length) return existingCompany;

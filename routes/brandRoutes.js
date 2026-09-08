@@ -13,7 +13,7 @@ const upload = uploadMiddleware({
 });
 
 router.route("/").get(brandController.getBrandsWithPagination).post(upload, brandController.createBrand);
-router.get("/all", brandController.getAllBrands);
+router.route("/all").get(brandController.getAllBrands);
 router.route("/:id").get(brandController.getBrandById).patch(upload, brandController.updateBrand).delete(brandController.deleteBrand);
 
 module.exports = router;

@@ -73,8 +73,6 @@ exports.createUser = asyncHandler(async (req, res) => {
     password: req.body.password,
     companies: req.body.companies,
     brands: req.body.brands,
-    useAliases: req.body.useAliases,
-    smtps: req.body.smtps,
     roles: req.body.roles,
     isActive: req.body.isActive,
   };
@@ -97,8 +95,6 @@ exports.updateUser = asyncHandler(async (req, res) => {
     password: req.body.password,
     companies: req.body.companies,
     brands: req.body.brands,
-    useAliases: req.body.useAliases,
-    smtps: req.body.smtps,
     roles: req.body.roles,
     isActive: req.body.isActive,
   };

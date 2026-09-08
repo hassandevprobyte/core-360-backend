@@ -13,7 +13,7 @@ exports.baseSchema = Joi.object({
 });
 
 exports.createBrand = exports.baseSchema
-  .fork(["title", "acronym", "company", "brandUrl", "imgUrl"], (schema) => schema.required())
+  .fork(["title", "acronym", "company", "brandUrl"], (schema) => schema.required())
   .fork("isActive", (schema) => schema.default(true));
 
 exports.updateBrand = exports.baseSchema.append({ id: objectId.required() });

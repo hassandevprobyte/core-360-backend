@@ -1,4 +1,5 @@
 const MODELS = Object.freeze({
+  APPLICATION: "Application",
   ATTACHMENT: "Attachment",
   BRAND: "Brand",
   COMPANY: "Company",

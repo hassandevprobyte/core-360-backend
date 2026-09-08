@@ -9,7 +9,7 @@ const SCOPE = require("../constants/SCOPE");
 
 const SUPER_ADMIN = {
   title: "super admin",
-  email: "superadmin@central360.com",
+  email: "superadmin@core360.com",
   defaultPassword: "Abcd1234",
   role: "super admin",
 };

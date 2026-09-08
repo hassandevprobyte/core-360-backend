@@ -15,7 +15,7 @@ exports.getUsersCount = async (filters) => {
 };
 
 exports.getUserById = async (userId) => {
-  return User.findById(userId, "-password").populate(POPULATION_PIPELINE);
+  return User.findById(userId, "-password").populate(POPULATION_PIPELINE).lean();
 };
 
 exports.getUserPasswordById = async (userId) => {

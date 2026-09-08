@@ -13,7 +13,7 @@ const upload = uploadMiddleware({
 });
 
 router.route("/").get(companyController.getCompaniesWithPagination).post(upload, companyController.createCompany);
-router.get("/all", companyController.getAllCompanies);
+router.route("/all").get(companyController.getAllCompanies);
 router.route("/:id").get(companyController.getCompanyById).patch(upload, companyController.updateCompany).delete(companyController.deleteCompany);
 
 module.exports = router;

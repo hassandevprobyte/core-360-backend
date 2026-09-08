@@ -15,25 +15,25 @@ exports.login = asyncHandler(async (req, res) => {
     password: req.body.password,
   };
 
-  const data = await authService.login(payload);
+  const { accessToken, refreshToken, user } = await authService.login(payload);
 
-  res.cookie("accessToken", data.accessToken, {
+  res.cookie("accessToken", accessToken, {
     httpOnly: true,
-    secure: env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: true,
+    sameSite: "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000,
     path: "/",
   });
 
-  res.cookie("refreshToken", data.refreshToken, {
+  res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    secure: env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: true,
+    sameSite: "strict",
     maxAge: 30 * 24 * 60 * 60 * 1000,
     path: "/",
   });
 
-  res.status(200).json(data);
+  res.status(200).json(user);
 });
 
 // @desc    Refresh auth token
@@ -44,8 +44,8 @@ exports.refresh = asyncHandler(async (req, res) => {
 
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
-    secure: env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: true,
+    sameSite: "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000,
     path: "/",
   });

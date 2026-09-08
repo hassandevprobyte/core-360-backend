@@ -15,13 +15,11 @@ const message = require("../constants/MESSAGE");
 const { env } = require("../config");
 
 const protect = asyncHandler(async (req, res, next) => {
-  const authHeader = req.headers.authorization || req.headers.Authorization;
+  const token = req.cookies?.accessToken;
 
-  if (!authHeader?.startsWith("Bearer ")) {
+  if (!token) {
     throw Boom.unauthorized(`${message.error.auth.unauthorized}, no token provided`);
   }
-
-  const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(token, env.JWT.ACCESS_TOKEN);

@@ -20,6 +20,9 @@ const resolveEffectiveAccess = require("../utils/resolveEffectiveAccess");
 // Constants
 const message = require("../constants/MESSAGE");
 
+// DTOs
+const { LoginResponseDTO, RefreshResponseDTO, ChangePasswordResponseDTO } = require("../dtos/auth");
+
 exports.login = async (payload) => {
   const validatedPayload = joi.validate(payload, joiSchema.login);
 
@@ -44,11 +47,7 @@ exports.login = async (payload) => {
   const accessToken = jwt.sign({ id: user._id }, env.JWT.ACCESS_TOKEN, { expiresIn: "7d" });
   const refreshToken = jwt.sign({ id: user._id }, env.JWT.REFRESH_TOKEN, { expiresIn: "30d" });
 
-  return {
-    user: userPayload,
-    accessToken,
-    refreshToken,
-  };
+  return { user: userPayload, accessToken, refreshToken };
 };
 
 exports.refresh = async (refreshToken) => {
@@ -59,16 +58,12 @@ exports.refresh = async (refreshToken) => {
   const decoded = jwt.verify(refreshToken, env.JWT.REFRESH_TOKEN);
 
   const user = await userValidation.throwErrorIfUserDoesNotExist(decoded.id);
-  console.log(user);
-  await user.populate("roles");
 
   authValidation.throwErrorIfUserIsInactive(user);
 
   const accessToken = jwt.sign({ id: user._id }, env.JWT.ACCESS_TOKEN, { expiresIn: "7d" });
 
-  return {
-    accessToken,
-  };
+  return { accessToken };
 };
 
 exports.changePassword = async (payload) => {

@@ -52,6 +52,9 @@ exports.createCompany = asyncHandler(async (req, res) => {
     title: req.body.title,
     acronym: req.body.acronym,
     imgUrl: req.file?.path,
+    website: req.body.website,
+    phone: req.body.phone,
+    address: req.body.address,
   };
 
   const data = await companyService.createCompany(payload);
@@ -69,6 +72,9 @@ exports.updateCompany = asyncHandler(async (req, res) => {
     id: req.params.id,
     title: req.body.title,
     acronym: req.body.acronym,
+    website: req.body.website,
+    phone: req.body.phone,
+    address: req.body.address,
     ...(req.file && { imgUrl: req.file.path }),
   };
 

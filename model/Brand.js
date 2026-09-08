@@ -25,7 +25,6 @@ const BrandSchema = new mongoose.Schema(
     },
     imgUrl: {
       type: String,
-      required: [true, "icon is required"],
     },
     company: {
       type: mongoose.Schema.Types.ObjectId,

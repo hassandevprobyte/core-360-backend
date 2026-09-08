@@ -1,6 +1,3 @@
-// Constants
-const MODELS = require("./MODELS");
-
 const SCOPE = Object.freeze({
   RESOURCE: "resource",
   GLOBAL: "global",

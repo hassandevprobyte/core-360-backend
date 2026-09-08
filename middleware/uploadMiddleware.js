@@ -12,7 +12,13 @@ const Boom = require("@hapi/boom");
  * @param {Array<string>} options.allowedMimeTypes - allowed MIME types
  * @param {number} options.maxFileSize - max file size in bytes
  */
-const uploadMiddleware = ({ destination, uploadType = "single", field, allowedMimeTypes = ["image/jpeg", "image/png", "application/pdf", "text/csv"], maxFileSize = 5 * 1024 * 1024 }) => {
+const uploadMiddleware = ({
+  destination,
+  uploadType = "single",
+  field,
+  allowedMimeTypes = ["image/jpeg", "image/png", "application/pdf", "text/csv"],
+  maxFileSize = 5 * 1024 * 1024,
+}) => {
   if (!destination) throw Boom.badImplementation("Upload destination is required");
 
   const storage = multer.diskStorage({
