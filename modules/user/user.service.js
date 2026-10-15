@@ -6,10 +6,10 @@ const userRepository = require("./user.repository");
 // Validations
 const joi = require("../../config");
 const joiSchema = require("./user.schema");
-const userValidation = require("./user.validation");
 const brandValidation = require("../brand/brand.validation");
 const companyValidation = require("../company/company.validation");
 const roleValidation = require("../role/role.validation");
+const userValidation = require("./user.validation");
 
 exports.getAllUsers = async (filters) => {
   return userRepository.getAllUsers(filters);

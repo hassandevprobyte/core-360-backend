@@ -1,4 +1,4 @@
-const allowedOrigins = ["*"];
+const allowedOrigins = ["*", "http://localhost:5172", "https://rv10n5m4-8004.inc1.devtunnels.ms/"];
 
 const corsOptions = {
   origin: (origin, callback) => {

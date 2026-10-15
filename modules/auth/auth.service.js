@@ -24,7 +24,7 @@ exports.login = async (payload) => {
   const validatedPayload = joi.validate(payload, joiSchema.login);
 
   const user = await authValidation.throwErrorIfUserEmailDoesNotExist(validatedPayload.email);
-  await user.populate("roles");
+  await user.populate("roles companies brands");
 
   authValidation.throwErrorIfUserIsInactive(user);
   await authValidation.throwErrorIfPasswordIncorrect(validatedPayload.password, user.password);
@@ -35,6 +35,9 @@ exports.login = async (payload) => {
     id: user._id,
     name: user.name,
     email: user.email,
+    companies: user.companies,
+    brands: user.brands,
+    isActive: user.isActive,
     effectivePermissions: effectiveAccess.effectivePermissions,
     effectiveScope: effectiveAccess.effectiveScope,
     indexPath: effectiveAccess.indexPath,

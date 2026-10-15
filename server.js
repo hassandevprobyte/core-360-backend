@@ -34,6 +34,7 @@ app.use(pagination);
 // app.use(logger);
 
 app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/public", require("./modules/public"));
 app.use("/api/v1", require("./modules"));
 
 app.use(errorHandler);

@@ -7,6 +7,7 @@ const envSchema = Joi.object({
   PORT: Joi.number().default(5000),
   MONGODB_URI: Joi.string().uri().required(),
   FRONTEND_URL: Joi.string().uri().required(),
+  AUTH_360_API_URL: Joi.string().uri().required(),
   JWT_SECRET: Joi.string().required(),
   ACCESS_TOKEN_SECRET: Joi.string().required(),
   REFRESH_TOKEN_SECRET: Joi.string().required(),
@@ -24,6 +25,7 @@ const env = {
   PORT: envVars.PORT,
   MONGODB_URI: envVars.MONGODB_URI,
   FRONTEND_URL: envVars.FRONTEND_URL,
+  AUTH_360_API_URL: envVars.AUTH_360_API_URL,
   JWT: {
     SECRET: envVars.JWT_SECRET,
     ACCESS_TOKEN: envVars.ACCESS_TOKEN_SECRET,

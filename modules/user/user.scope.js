@@ -47,7 +47,7 @@ exports.authorizeByScope = async (authUser, userId) => {
 
   switch (userScope) {
     case SCOPE.OWN:
-      return authUser.id.toString() === user._id.toString();
+      return String(authUser.id) === String(user._id);
 
     case SCOPE.BRAND:
       return authUser.brandIds.some((brandId) => user.brands.map((b) => String(b._id)).includes(brandId));

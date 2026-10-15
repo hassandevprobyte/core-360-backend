@@ -99,6 +99,8 @@ exports.updateUser = asyncHandler(async (req, res) => {
     isActive: req.body.isActive,
   };
 
+  console.log(payload);
+
   const data = await userService.updateUser(payload);
 
   res.status(200).json(data);

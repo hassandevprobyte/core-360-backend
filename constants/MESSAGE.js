@@ -1,4 +1,10 @@
 exports.error = {
+  application: {
+    notFound: "Application not found",
+    titleExists: "Title already exists",
+    audienceExists: "Audience already exists",
+    clintIdExists: "Client ID already exists",
+  },
   attachment: {
     notFound: "Attachment not found",
     resourceNotFound: (resource) => `${resource} not found`,
